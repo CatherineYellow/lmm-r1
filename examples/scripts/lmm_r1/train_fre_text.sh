@@ -82,7 +82,6 @@ ray job submit --address="http://127.0.0.1:8265" \
    --vllm_sync_backend gloo \
    --enable_prefix_caching \
    --pretrain ${PRETRAIN_MODEL_PATH} \
-   --model_type local \
    --save_path ${SAVE_PATH}/${MODEL_NAME} \
    --micro_train_batch_size 2 \
    --train_batch_size 256 \

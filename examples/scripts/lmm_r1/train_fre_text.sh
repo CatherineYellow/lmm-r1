@@ -7,8 +7,8 @@
 
 # Base paths - MODIFY THESE
 export WORKSPACE_DIR="$(pwd)"                      # Path to project root directory
-export DATASET_PATH="./data/deepscaler/deepscaler_message.jsonl"  # Path to your dataset
-export PRETRAIN_MODEL_PATH="./models/Qwen2.5-VL-3B-Instruct"  # Path to pretrained model
+export DATASET_PATH="./data/VLM-Reasoner_deepscaler_train.jsonl"  # Path to your dataset
+export PRETRAIN_MODEL_PATH="/data/vayu/train/models/Qwen2.5-VL-7B-Instruct"  # Path to pretrained model
 export SAVE_PATH="./checkpoints"                   # Path to save checkpoints
 
 # Model configuration

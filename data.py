@@ -2,7 +2,7 @@ from datasets import load_dataset
 import json
 
 # 1. Hugging Face 认证
-HF_TOKEN = "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"
+HF_TOKEN = 
 
 # 2. 加载 Hugging Face 数据集（显式传入 Token）
 dataset_name = "VLM-Reasoner/deepscaler"

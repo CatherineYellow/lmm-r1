@@ -1,22 +1,19 @@
-import subprocess
-import os
+from datasets import load_dataset
+import json
 
-def login_huggingface(token):
-    print("Logging into Hugging Face...")
-    command = ["huggingface-cli", "login", "--token", token]
-    subprocess.run(command, check=True)
-    print("Login successful.")
+# 1. Hugging Face 认证
+HF_TOKEN = "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"
 
-def download_deepscaler_dataset():
-    dataset_name = "VLM-Reasoner/deepscaler"
-    save_path = os.path.join(os.getcwd(), dataset_name.replace("/", "_"))
+# 2. 加载 Hugging Face 数据集（显式传入 Token）
+dataset_name = "VLM-Reasoner/deepscaler"
+dataset = load_dataset(dataset_name, token=HF_TOKEN)
+
+# 3. 保存为 JSONL
+for split, data in dataset.items():
+    output_file = f"{dataset_name.replace('/', '_')}_{split}.jsonl"
     
-    print(f"Downloading dataset: {dataset_name}")
-    command = ["huggingface-cli", "download", dataset_name, "--local-dir", save_path]
-    subprocess.run(command, check=True)
-    print(f"Dataset saved to: {save_path}")
+    with open(output_file, "w", encoding="utf-8") as f:
+        for item in data:
+            f.write(json.dumps(item, ensure_ascii=False) + "\n")
     
-if __name__ == "__main__":
-    HF_TOKEN = "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"
-    login_huggingface(HF_TOKEN)
-    download_deepscaler_dataset()
+    print(f"Saved {split} split to {output_file}")

@@ -50,6 +50,9 @@ class LLMRayActor:
         self.requests = {}
         self.response_queues = defaultdict(queue.Queue)
 
+        # self.llm = LLM(*args, **kwargs)
+        # TODO
+        kwargs['repo_type'] = "local"
         self.llm = LLM(*args, **kwargs)
 
     def init_process_group(self, master_address, master_port, rank_offset, world_size, group_name, backend, use_ray):
